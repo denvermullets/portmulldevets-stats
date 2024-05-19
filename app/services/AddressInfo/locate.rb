@@ -1,4 +1,4 @@
-# service that just grabs the specified Ballot with an optional Voter info attached
+# service that looks up a user's IP
 
 module AddressInfo
   class Locate < Service
