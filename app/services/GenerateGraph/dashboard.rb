@@ -18,7 +18,7 @@ module GenerateGraph
       page_views_by_day = events_by_range.where(name: 'page_visit').group_by_day(:created_at).count
 
       {
-        unique_users_by_day:, events_by_day:, page_views_by_day:
+        unique_users_by_day:, events_by_day:, page_views_by_day:, events_by_range:
       }
     end
 
