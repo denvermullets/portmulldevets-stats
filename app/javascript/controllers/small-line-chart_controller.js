@@ -3,10 +3,10 @@ import { Chart, registerables } from "chart.js";
 Chart.register(...registerables);
 
 export default class extends Controller {
-  static targets = ["userRadialChart"];
+  static targets = ["smallLineChart"];
 
   connect() {
-    const eventsData = this.userRadialChartTarget.dataset.userRadialEvents;
+    const eventsData = this.smallLineChartTarget.dataset.smallLineChartEvents;
 
     if (!eventsData) {
       console.error("No events data found.");
@@ -14,7 +14,7 @@ export default class extends Controller {
     }
 
     const parsedData = JSON.parse(eventsData);
-    const visitsByDay = this.processData(parsedData);
+    const visitsByDay = parsedData;
 
     new Chart(this.canvasContext(), {
       type: "line",
@@ -38,6 +38,9 @@ export default class extends Controller {
         scales: {
           y: {
             beginAtZero: true,
+            border: {
+              display: false,
+            },
             grid: {
               display: false, // Hide background lines
               drawBorder: false, // Hide the border on the left
@@ -48,6 +51,9 @@ export default class extends Controller {
             },
           },
           x: {
+            border: {
+              display: false,
+            },
             grid: {
               display: false, // Hide background lines on x-axis
               drawBorder: false, // Hide the border on the bottom
@@ -79,42 +85,6 @@ export default class extends Controller {
   }
 
   canvasContext() {
-    return this.userRadialChartTarget.getContext("2d");
-  }
-
-  processData(data) {
-    const visitsByDay = {};
-
-    // Initialize visits count for each of the last 30 days
-    for (let i = 0; i < 30; i++) {
-      const date = new Date();
-      date.setDate(date.getDate() - i);
-      const dateString = date.toISOString().split("T")[0];
-      visitsByDay[dateString] = new Set();
-    }
-
-    // Process visit data
-    data.forEach((visit) => {
-      const visitDate = new Date(visit.created_at).toISOString().split("T")[0];
-      if (visitsByDay[visitDate] !== undefined) {
-        visitsByDay[visitDate].add(visit.user_id);
-      }
-    });
-
-    // Convert sets to counts
-    const visitsByDayCount = {};
-    Object.keys(visitsByDay).forEach((date) => {
-      visitsByDayCount[date] = visitsByDay[date].size;
-    });
-
-    // Sort visitsByDay by date
-    const sortedVisitsByDayCount = Object.keys(visitsByDayCount)
-      .sort()
-      .reduce((acc, date) => {
-        acc[date] = visitsByDayCount[date];
-        return acc;
-      }, {});
-
-    return sortedVisitsByDayCount;
+    return this.smallLineChartTarget.getContext("2d");
   }
 }

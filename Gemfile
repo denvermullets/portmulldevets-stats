@@ -4,6 +4,7 @@ ruby '3.3.0'
 
 gem 'bootsnap', require: false
 gem 'dotenv-rails'
+gem 'groupdate'
 gem 'http'
 gem 'importmap-rails'
 gem 'pg', '~> 1.1'
