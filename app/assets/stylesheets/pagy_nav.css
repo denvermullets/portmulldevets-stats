@@ -1,0 +1,42 @@
+/* pagy custom nav styling */
+
+.pagy {
+  @apply flex justify-end gap-0 pb-0 my-4 mb-0 space-x-1 text-sm text-vaz-blue;
+}
+
+.pagy a:not(.gap) {
+  /* page numbers */
+  @apply block px-3 py-2 text-gray-700 border rounded-md bg-vaz-beige border-vaz-blue;
+}
+
+.pagy a:not(.gap):hover {
+  /* page numbers */
+  @apply text-vaz-beige bg-vaz-blue;
+}
+
+.pagy a:not(.gap)[href] {
+  /* active nav links */
+  @apply text-vaz-blue;
+}
+
+.pagy a:not(.gap)[href]:hover {
+  /* active nav links hover */
+  @apply text-vaz-beige;
+}
+
+.pagy a:not(.gap):not([href]) {
+  /* disabled nav links */
+  @apply text-gray-300 cursor-default bg-vaz-beige;
+}
+
+/* .pagy a.current {
+  @apply bg-blue-500 border-blue-500 text-vaz-beige;
+} */
+
+/* .pagy label {
+  @apply inline-block whitespace-nowrap bg-gray-200 rounded-lg px-3 py-0.5;
+} */
+
+/* .pagy label input {
+  @apply bg-blue-300 border-none rounded-md;
+} */

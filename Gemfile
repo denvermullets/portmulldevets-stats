@@ -7,8 +7,8 @@ gem 'dotenv-rails'
 gem 'groupdate'
 gem 'http'
 gem 'importmap-rails'
+gem 'pagy', '~> 8.4'
 gem 'pg', '~> 1.1'
-gem 'pry-byebug'
 gem 'puma', '>= 5.0'
 gem 'rack-cors'
 gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
@@ -24,6 +24,8 @@ group :development, :test do
 end
 
 group :development do
+  gem 'pry-byebug'
+  gem 'rubocop'
   gem 'web-console'
 end
 
