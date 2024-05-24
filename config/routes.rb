@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'up' => 'rails/health#show', as: :rails_health_check
 
   # Defines the root path route ("/")
-  root 'dashboard#index'
+  # root 'dashboard#index'
 
   namespace :api do
     namespace :v1 do
@@ -16,4 +16,5 @@ Rails.application.routes.draw do
 
   resources :users
   resources :events
+  resources :dashboard
 end
