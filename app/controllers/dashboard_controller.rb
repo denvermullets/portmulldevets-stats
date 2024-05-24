@@ -7,7 +7,6 @@ class DashboardController < ApplicationController
     unique_users_by_day = data[:unique_users_by_day]
     events_by_day = data[:events_by_day]
     page_views_by_day = data[:page_views_by_day]
-    # events_by_range = data[:events_by_range]
 
     @pagy, events_by_range = pagy(data[:events_by_range])
 
