@@ -1,12 +1,12 @@
+@import "./pagy_nav.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 /*
 
 @layer components {
   .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+    @apply px-4 py-2 bg-blue-200;
   }
 }
 

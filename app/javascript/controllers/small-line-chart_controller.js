@@ -24,8 +24,8 @@ export default class extends Controller {
           {
             label: "Number of Unique Users",
             data: Object.values(visitsByDay),
-            backgroundColor: "rgba(54, 162, 235, 0.2)",
-            borderColor: "rgba(54, 162, 235, 1)",
+            backgroundColor: "#d5e1f7",
+            borderColor: "#084CCF",
             borderWidth: 1,
             tension: 0.4, // Smooth lines
             pointRadius: 0, // Hide point dots
