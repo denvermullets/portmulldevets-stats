@@ -15,10 +15,11 @@ module GenerateGraph
       unique_users_by_day = generate_unique_counts(unique_users)
 
       events_by_day = events_by_range.group_by_day(:created_at).count
-      page_views_by_day = events_by_range.where(name: 'page_visit').group_by_day(:created_at).count
+      page_views_by_day = events_by_range.where(tag: 'page_visit').group_by_day(:created_at).count
 
       {
-        unique_users_by_day:, events_by_day:, page_views_by_day:, events_by_range:
+        unique_users_by_day:, events_by_day:, page_views_by_day:,
+        events_by_range: events_by_range.order(created_at: :asc)
       }
     end
 
