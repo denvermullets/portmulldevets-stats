@@ -9,6 +9,7 @@ module.exports = {
       },
       colors: {
         "vaz-beige": "#F6F5F1",
+        "vaz-blue": "#084CCF",
       },
     },
   },
