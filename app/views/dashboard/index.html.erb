@@ -7,5 +7,7 @@
     <!-- Total Page Views Chart -->
     <%= render partial: 'dashboard/page_views', locals: { page_views_by_day: } %>
   </div>
-  <%= render partial: 'dashboard/table', locals: { events_by_range: } %>
+  <%= turbo_frame_tag "events-table" do %>
+    <%= render partial: 'dashboard/table', locals: { events_by_range:, pagy: @pagy, start_date: @start_date, end_date: @end_date } %>
+  <% end %>
 </div>
