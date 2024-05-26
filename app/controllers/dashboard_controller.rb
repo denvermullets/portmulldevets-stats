@@ -2,7 +2,10 @@ class DashboardController < ApplicationController
   include Pagy::Backend
 
   def index
-    data = GenerateGraph::Dashboard.call(start_date: params[:start_date], end_date: params[:end_date])
+    @start_date = params[:start_date]
+    @end_date = params[:end_date]
+
+    data = GenerateGraph::Dashboard.call(start_date: @start_date, end_date: @end_date)
 
     unique_users_by_day = data[:unique_users_by_day]
     events_by_day = data[:events_by_day]

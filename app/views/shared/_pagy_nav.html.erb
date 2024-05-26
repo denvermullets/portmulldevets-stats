@@ -1,0 +1,15 @@
+<div class="pagy">
+  <% if pagy.prev %>
+    <%= link_to '<', url_for(page: pagy.prev, start_date: start_date, end_date: end_date), data: { turbo_frame: 'events-table' } %>
+  <% end %>
+  <% pagy.series.each do |item| %>
+    <% if item.is_a?(Integer) %>
+      <%= link_to item, url_for(page: item, start_date: start_date, end_date: end_date), data: { turbo_frame: 'events-table' } %>
+    <% else %>
+      <span class="gap"><%= item %></span>
+    <% end %>
+  <% end %>
+  <% if pagy.next %>
+    <%= link_to '>', url_for(page: pagy.next, start_date: start_date, end_date: end_date), data: { turbo_frame: 'events-table' } %>
+  <% end %>
+</div>
