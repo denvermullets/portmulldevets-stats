@@ -4,6 +4,11 @@
   @apply flex justify-end gap-0 pb-0 my-4 mb-0 space-x-1 text-sm text-vaz-blue;
 }
 
+.pagy .gap {
+  /* page numbers */
+  @apply block px-3 py-2 text-gray-700 bg-gray-200 border rounded-md border-vaz-blue;
+}
+
 .pagy a:not(.gap) {
   /* page numbers */
   @apply block px-3 py-2 text-gray-700 border rounded-md bg-vaz-beige border-vaz-blue;
@@ -29,14 +34,19 @@
   @apply text-gray-300 cursor-default bg-vaz-beige;
 }
 
+.pagy a.active {
+  /* current page number */
+  @apply block px-3 py-2 text-gray-700 border rounded-md bg-vaz-beige border-vaz-blue;
+}
+
 /* .pagy a.current {
   @apply bg-blue-500 border-blue-500 text-vaz-beige;
-} */
+}
 
-/* .pagy label {
+.pagy label {
   @apply inline-block whitespace-nowrap bg-gray-200 rounded-lg px-3 py-0.5;
-} */
+}
 
-/* .pagy label input {
+.pagy label input {
   @apply bg-blue-300 border-none rounded-md;
 } */
