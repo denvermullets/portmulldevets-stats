@@ -14,8 +14,8 @@ module GenerateGraph
       unique_users = filter_unique_users(events_by_range)
       unique_users_by_day = generate_unique_counts(unique_users)
 
-      events_by_day = events_by_range.group_by_day(:created_at).count
-      page_views_by_day = events_by_range.where(tag: 'page_visit').group_by_day(:created_at).count
+      events_by_day = generate_counts_by_day(events_by_range)
+      page_views_by_day = generate_counts_by_day(events_by_range.where(tag: 'page_visit'))
 
       {
         unique_users_by_day:, events_by_day:, page_views_by_day:,
@@ -43,6 +43,15 @@ module GenerateGraph
       # Fill in missing days with zero counts
       @complete_dates.each_with_object({}) do |date, hash|
         hash[date] = unique_users_by_date[date] || 0
+      end
+    end
+
+    def generate_counts_by_day(events)
+      events_by_date = events.group_by { |event| event.created_at.to_date }
+                             .transform_values(&:count)
+
+      @complete_dates.each_with_object({}) do |date, hash|
+        hash[date] = events_by_date[date] || 0
       end
     end
   end
