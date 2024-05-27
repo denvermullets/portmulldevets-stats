@@ -1,13 +1,13 @@
 <div class='w-full mt-14 bg-vaz-beige'>
-  <div class='flex flex-row justify-center gap-16 p-8'>
-    <!-- Total Users Chart -->
-    <%= render partial: 'dashboard/users', locals: { unique_users_by_day: } %>
-    <!-- Total Events Chart -->
-    <%= render partial: 'dashboard/events', locals: { events_by_day: } %>
-    <!-- Total Page Views Chart -->
-    <%= render partial: 'dashboard/page_views', locals: { page_views_by_day: } %>
-  </div>
-  <%= turbo_frame_tag "events-table" do %>
+  <%= turbo_frame_tag "dashboard-view" do %>
+    <div class='flex flex-row justify-center gap-16 p-8'>
+      <!-- Total Users Chart -->
+      <%= render partial: 'dashboard/users', locals: { unique_users_by_day: } %>
+      <!-- Total Events Chart -->
+      <%= render partial: 'dashboard/events', locals: { events_by_day: } %>
+      <!-- Total Page Views Chart -->
+      <%= render partial: 'dashboard/page_views', locals: { page_views_by_day: } %>
+    </div>
     <%= render partial: 'dashboard/table', locals: { events_by_range:, pagy: @pagy, start_date: @start_date, end_date: @end_date } %>
   <% end %>
 </div>
