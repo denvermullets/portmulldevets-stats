@@ -4,8 +4,19 @@ Chart.register(...registerables);
 
 export default class extends Controller {
   static targets = ["smallLineChart"];
+  chart = null;
 
   connect() {
+    this.renderChart();
+  }
+
+  disconnect() {
+    if (this.chart) {
+      this.chart.destroy();
+    }
+  }
+
+  renderChart() {
     const eventsData = this.smallLineChartTarget.dataset.smallLineChartEvents;
 
     if (!eventsData) {
@@ -13,8 +24,14 @@ export default class extends Controller {
       return;
     }
 
-    const parsedData = JSON.parse(eventsData);
-    const visitsByDay = parsedData;
+    let visitsByDay;
+
+    if (!eventsData || Object.keys(JSON.parse(eventsData)).length === 0) {
+      // no events data found render a straight line
+      visitsByDay = { "Day 1": 0, "Day 2": 0 };
+    } else {
+      visitsByDay = JSON.parse(eventsData);
+    }
 
     new Chart(this.canvasContext(), {
       type: "line",

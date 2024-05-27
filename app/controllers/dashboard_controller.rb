@@ -19,9 +19,6 @@ class DashboardController < ApplicationController
           unique_users_by_day:, events_by_day:, page_views_by_day:, events_by_range:
         }
       end
-      format.json do
-        render json: { unique_users_by_day:, events_by_day:, page_views_by_day:, events_by_range: }
-      end
     end
   end
 end
