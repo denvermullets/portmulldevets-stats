@@ -1,12 +1,8 @@
 <nav class='fixed top-0 left-0 z-20 w-full px-2 py-2 border-b bg-vaz-beige md:px-32'>
   <div class='flex flex-row items-center justify-between px-4 py-2 mx-auto space-x-4 text-slate-600'>
-    <div class='hover:text-sky-500 '>
-      <%= link_to 'Dashboard', dashboard_index_path, class: 'hover:text-vaz-blue'%>
-    </div>
+    <%= link_to 'Dashboard', dashboard_index_path, class: 'hover:text-vaz-blue'%>
     <div class='flex flex-row space-x-4 '>
-      <div>
-        <%= link_to 'Users', users_path, class: 'hover:text-vaz-blue'%>
-      </div>
+      <%= link_to 'Users', users_path, class: 'hover:text-vaz-blue'%>
       <div>
         <div class='cursor-pointer hover:text-sky-500' >Root</div>
         <%# <%= link_to 'sign up', user_sign_up_path, class: 'hover:text-sky-500' %>

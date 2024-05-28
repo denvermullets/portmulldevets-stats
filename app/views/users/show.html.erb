@@ -1,0 +1,7 @@
+<div class='w-full mt-14 bg-vaz-beige'>
+  <%= turbo_frame_tag "user-view" do %>
+    <div class='flex flex-row justify-center gap-16 p-8'>
+      <%= render partial: 'users/events_table', locals: { events:, user:, pagy: @pagy, start_date: @start_date, end_date: @end_date } %>
+    </div>
+  <% end %>
+</div>
