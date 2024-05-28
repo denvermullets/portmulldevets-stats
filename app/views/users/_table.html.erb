@@ -1,15 +1,7 @@
 <!-- Table start -->
 <div class="container mx-auto p4 sm:px-4">
   <div class="px-4 mx-4 overflow-x-auto sm:-mx-8 sm:px-2">
-    <div class="flex flex-row justify-end pb-8 ">
-      <%= form_with url: users_path, method: :get, data: { controller: "date-range", action: "submit->date-range#updateTable" }, class: 'space-x-4' do |form| %>
-        <%= form.label :start_date, "Start Date" %>
-        <%= form.date_field :start_date, value: (params[:start_date] || 30.days.ago.to_date), class: "border border-gray-300 rounded p-2" %>
-        <%= form.label :end_date, "End Date", class: '' %>
-        <%= form.date_field :end_date, value: (params[:end_date] || Date.today), class: "border border-gray-300 rounded p-2" %>
-        <%= form.submit "Update Results", class: "px-3 py-2 text-gray-700 border text-vaz-blue rounded-md bg-vaz-beige border-vaz-blue hover:bg-vaz-blue hover:text-vaz-beige cursor-pointer" %>
-      <% end %>
-    </div>
+    <%= render partial: 'shared/datepicker', locals: { form_url: users_path } %>
     <div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
       <table class="min-w-full leading-normal">
         <thead>
@@ -45,16 +37,16 @@
         </thead>
         <tbody>
           <% users.map do |user| %>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-              <td class="px-6 py-4 text-sm font-semibold text-gray-900 dark:text-white"><%= link_to user.id, user_path(user), class: 'cursor-pointer text-vaz-blue', data: { turbo: false } %></td>
-              <td class="px-6 py-4 text-sm text-gray-900 dark:text-white"><%= user.address %></td>
-              <td class="px-6 py-4 text-sm text-gray-900 dark:text-white"><%= user.timezone %></td>
-              <td class="px-6 py-4 text-sm text-gray-900 dark:text-white"><%= user.region %></td>
-              <td class="px-6 py-4 text-sm text-gray-900 dark:text-white"><%= user.country %></td>
-              <td class="px-6 py-4 text-sm text-gray-900 dark:text-white"><%= user.city %></td>
-              <td class="px-6 py-4 text-sm text-gray-900 dark:text-white"><%= user.postal %></td>
-              <td class="px-6 py-4 text-sm text-gray-900 dark:text-white"><%= user.org %></td>
-              <td class="px-6 py-4 text-sm text-gray-900 dark:text-white"><%= user.loc %></td>
+            <tr class="bg-white border-b hover:bg-gray-50 ">
+              <td class="px-6 py-4 text-sm font-semibold text-gray-900 "><%= link_to user.id, user_path(user), class: 'cursor-pointer text-vaz-blue', data: { turbo: false } %></td>
+              <td class="px-6 py-4 text-sm text-gray-900 "><%= user.address %></td>
+              <td class="px-6 py-4 text-sm text-gray-900 "><%= user.timezone %></td>
+              <td class="px-6 py-4 text-sm text-gray-900 "><%= user.region %></td>
+              <td class="px-6 py-4 text-sm text-gray-900 "><%= user.country %></td>
+              <td class="px-6 py-4 text-sm text-gray-900 "><%= user.city %></td>
+              <td class="px-6 py-4 text-sm text-gray-900 "><%= user.postal %></td>
+              <td class="px-6 py-4 text-sm text-gray-900 "><%= user.org %></td>
+              <td class="px-6 py-4 text-sm text-gray-900 "><%= user.loc %></td>
             </tr>
           <% end %>
         </tbody>

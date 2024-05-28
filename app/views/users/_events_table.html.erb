@@ -1,15 +1,7 @@
 <!-- Table start -->
 <div class="container mx-auto p4 sm:px-4">
   <div class="px-4 mx-4 overflow-x-auto sm:-mx-8 sm:px-2">
-    <div class="flex flex-row justify-end pb-8 ">
-      <%= form_with url: user_path(user), method: :get, data: { controller: "date-range", action: "submit->date-range#updateTable" }, class: 'space-x-4' do |form| %>
-        <%= form.label :start_date, "Start Date" %>
-        <%= form.date_field :start_date, value: (params[:start_date] || 30.days.ago.to_date), class: "border border-gray-300 rounded p-2" %>
-        <%= form.label :end_date, "End Date", class: '' %>
-        <%= form.date_field :end_date, value: (params[:end_date] || Date.today), class: "border border-gray-300 rounded p-2" %>
-        <%= form.submit "Update Results", class: "px-3 py-2 text-gray-700 border text-vaz-blue rounded-md bg-vaz-beige border-vaz-blue hover:bg-vaz-blue hover:text-vaz-beige cursor-pointer" %>
-      <% end %>
-    </div>
+    <%= render partial: 'shared/datepicker', locals: { form_url: user_path(user) } %>
     <div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
       <table class="min-w-full leading-normal">
         <thead>
@@ -45,16 +37,16 @@
         </thead>
         <tbody>
           <% events.map do |event| %>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-              <td class="px-6 py-4 text-sm text-gray-900 dark:text-white"><%= event.id %></td>
-              <td class="px-6 py-4 text-sm text-gray-900 dark:text-white"><%= event.name.blank? ? '(NULL)' : event.name %></td>
-              <td class="px-6 py-4 text-sm text-gray-900 dark:text-white"><%= event.tag %></td>
-              <td class="px-6 py-4 text-sm text-gray-900 dark:text-white"><%= event.target %></td>
-              <td class="px-6 py-4 text-sm text-gray-900 dark:text-white"><%= event.browser.split('-')[0] || '(NULL)' %></td>
-              <td class="px-6 py-4 text-sm text-gray-900 dark:text-white"><%= event.operating_system.split('-')[0] || '(NULL)' %></td>
-              <td class="px-6 py-4 text-sm text-gray-900 dark:text-white"><%= event.screen_size %></td>
-              <td class="px-6 py-4 text-sm text-gray-900 dark:text-white"><%= event.device_type %></td>
-              <td class="px-6 py-4 text-sm text-gray-900 dark:text-white"><%= event.referrer.blank? ? '(NULL)' : event.referrer %></td>
+            <tr class="bg-white border-b hover:bg-gray-50 ">
+              <td class="px-6 py-4 text-sm text-gray-900 "><%= event.id %></td>
+              <td class="px-6 py-4 text-sm text-gray-900 "><%= event.name.blank? ? '(NULL)' : event.name %></td>
+              <td class="px-6 py-4 text-sm text-gray-900 "><%= event.tag %></td>
+              <td class="px-6 py-4 text-sm text-gray-900 "><%= event.target %></td>
+              <td class="px-6 py-4 text-sm text-gray-900 "><%= event.browser.split('-')[0] || '(NULL)' %></td>
+              <td class="px-6 py-4 text-sm text-gray-900 "><%= event.operating_system.split('-')[0] || '(NULL)' %></td>
+              <td class="px-6 py-4 text-sm text-gray-900 "><%= event.screen_size %></td>
+              <td class="px-6 py-4 text-sm text-gray-900 "><%= event.device_type %></td>
+              <td class="px-6 py-4 text-sm text-gray-900 "><%= event.referrer.blank? ? '(NULL)' : event.referrer %></td>
             </tr>
           <% end %>
         </tbody>
