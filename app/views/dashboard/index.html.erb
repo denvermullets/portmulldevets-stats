@@ -1,12 +1,14 @@
 <div class='w-full mt-14 bg-vaz-beige'>
   <%= turbo_frame_tag "dashboard-view" do %>
-    <div class='flex flex-row justify-center gap-16 p-8'>
-      <!-- Total Users Chart -->
-      <%= render partial: 'dashboard/users', locals: { unique_users_by_day: } %>
-      <!-- Total Events Chart -->
-      <%= render partial: 'dashboard/events', locals: { events_by_day: } %>
-      <!-- Total Page Views Chart -->
-      <%= render partial: 'dashboard/page_views', locals: { page_views_by_day: } %>
+    <div class="container py-8 mx-auto sm:px-4">
+      <div class='flex flex-col justify-center gap-2 px-4 md:gap-4 lg:flex-row lg:gap-16 '>
+        <!-- Total Users Chart -->
+        <%= render partial: 'dashboard/users', locals: { unique_users_by_day: } %>
+        <!-- Total Events Chart -->
+        <%= render partial: 'dashboard/events', locals: { events_by_day: } %>
+        <!-- Total Page Views Chart -->
+        <%= render partial: 'dashboard/page_views', locals: { page_views_by_day: } %>
+      </div>
     </div>
     <%= render partial: 'dashboard/table', locals: { events_by_range:, pagy: @pagy, start_date: @start_date, end_date: @end_date } %>
   <% end %>
